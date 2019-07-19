@@ -1,0 +1,115 @@
+@import '../styling//variables';
+
+.navbar {
+    width: 1100px;
+    margin: 0 auto;
+    background-color: #FA320A;
+    height: 85px;
+    display: flex;
+
+    .left-container {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        padding-left: 30px;
+
+        main {
+            font-family: $logo-font;
+            font-size: 27px;
+            color: white;
+            width: 97px;
+        }
+
+        form {
+            margin-left: 30px;
+
+            input {
+                border: none;
+                padding: 10px;
+                border-radius: 5px 0 0 5px;
+                outline: none;
+            }
+
+            button {
+                font-family: $default;
+                font-weight: bold;
+                border: none;
+                outline: none;
+                padding: 8.5px 15px;
+                border-radius: 0 5px 5px 0;
+            }
+
+            button:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .right-container {
+        width: 50%;
+
+        ul {
+            @include center;
+            font-family: $navbar-font;
+            font-size: 23px;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 82px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        li {
+            display: inline;
+            margin: 0 25px;
+        }
+
+    }
+}
+
+.social-media {
+    width: 1100px;
+    margin: 0 auto;
+    height: 27px;
+    background-color: #767676;
+    display: flex;
+
+    .left-container {
+        width: 50%;
+        display: flex;
+        align-items: center;
+
+        img {
+            margin-left: 24px;
+        }
+
+        .special {
+            margin-left: 28px;
+        }
+
+        img:hover {
+            cursor: pointer;
+        }
+    }
+
+    .right-container {
+        width: 50%;
+        font-family: $default;
+        font-size: 14px;
+        color: white;
+        height: 25px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 5px;
+    }
+}

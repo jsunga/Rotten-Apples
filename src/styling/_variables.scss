@@ -1,0 +1,14 @@
+$logo-font: 'Luckiest Guy', cursive;
+$navbar-font: 'Sigmar One', cursive;
+$title-font: 'Oswald', sans-serif;
+$default: 'Open Sans', sans-serif;
+
+@mixin center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin border {
+    border: 1px solid green;
+}
