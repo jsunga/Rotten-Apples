@@ -20,7 +20,7 @@ export default class Navbar extends Component {
                     </div>
                     <div className='right-container'>
                         <ul>
-                            <NavLink  to='/' exact activeStyle={{textDecoration: 'underline'}} className='nav-link'><li>Movies</li></NavLink>
+                            <NavLink  to='/movies' activeStyle={{textDecoration: 'underline'}} className='nav-link'><li>Movies</li></NavLink>
                             <NavLink  to='/tv_shows' exact activeStyle={{textDecoration: 'underline'}} className='nav-link'><li>TV Shows</li></NavLink>
                         </ul>
                     </div>

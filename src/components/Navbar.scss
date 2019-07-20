@@ -3,6 +3,7 @@
 .navbar {
     width: 1100px;
     margin: 0 auto;
+    margin-top: 10px;
     background-color: #FA320A;
     height: 85px;
     display: flex;
@@ -110,6 +111,6 @@
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        padding-right: 5px;
+        padding-right: 10px;
     }
 }
