@@ -1,11 +1,11 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import './MoviesNavbar.scss'
+import '../styling/sidebar.scss'
 
-const MoviesNavbar = () => {
+const MovieNavbar = () => {
 
     return (
-        <div className='movies-navbar'>
+        <div className='sidebar'>
             <div>
                 <h3>Movies</h3>
                 <ul>
@@ -20,4 +20,4 @@ const MoviesNavbar = () => {
 
 }
 
-export default MoviesNavbar
+export default MovieNavbar

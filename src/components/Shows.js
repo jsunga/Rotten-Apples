@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import TVNavbar from './TVNavbar'
-import Movies from './Movies'
+import ShowNavbar from './ShowNavbar'
+import Results from './Results'
 import axios from 'axios'
-import './Home.scss'
+import '../styling/style.scss'
 
 export default class Home extends Component {
 
@@ -16,7 +16,7 @@ export default class Home extends Component {
     }
 
     fetchMovies = async () => {
-        let movies = await axios.get('https://api.themoviedb.org/3/tv/popular?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US&page=1')
+        let movies = await axios.get(`https://api.themoviedb.org/3/tv/${this.props.type}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US&page=1`)
         this.setState({movies: movies.data.results})
     }
 
@@ -29,11 +29,9 @@ export default class Home extends Component {
 
     render() {
         return (
-            <div className='home'>
-                <TVNavbar />
-                <div className='right-container'>
-                    <Movies movies={this.state.movies} />
-                </div>  
+            <div className='main'>
+                <ShowNavbar />
+                <div className='right-container'><Results movies={this.state.movies} /></div>  
             </div>
         )
     }

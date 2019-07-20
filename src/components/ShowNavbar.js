@@ -1,11 +1,11 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import './MoviesNavbar.scss'
+import '../styling/sidebar.scss'
 
-const TVNavbar = () => {
+const ShowNavbar = () => {
 
     return (
-        <div className='movies-navbar'>
+        <div className='sidebar'>
             <div>
                 <h3>TV Shows</h3>
                 <ul>
@@ -20,4 +20,4 @@ const TVNavbar = () => {
 
 }
 
-export default TVNavbar
+export default ShowNavbar

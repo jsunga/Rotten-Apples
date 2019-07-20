@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import fb from '../assets/fb.png'
 import ig from '../assets/ig.png'
 import twitter from '../assets/twitter.png'
-import './Navbar.scss'
+import '../styling/navbar.scss'
 
 export default class Navbar extends Component {
 

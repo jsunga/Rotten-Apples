@@ -1,27 +1,39 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import './Movies.scss'
+import React, { Component } from 'react'
+import MovieNavbar from './MovieNavbar'
+import Results from './Results'
+import axios from 'axios'
+import '../styling/style.scss'
 
-const frontPath = 'https://image.tmdb.org/t/p/w400'
+export default class Home extends Component {
 
-const Movies = props => {
+    state = {
+        movies: []
+    }
 
-    return (
-        <div className='movies'>
-            {props.movies.map(item => (
-                <Link to={`/id/${item.id}`} key={item.id} className='link'>
-                    <div className='card'>
-                        <div className='image-container'><img src={frontPath + item.poster_path} alt="poster" /></div>
-                        <div className='body'>
-                            <h3>{item.title ? item.title : item.name}</h3>
-                            <h4>{localStorage.getItem(`${item.genre_ids[0]}`)} {localStorage.getItem(`${item.genre_ids[1]}`) ? `/` : null} {localStorage.getItem(`${item.genre_ids[1]}`)}</h4>
-                        </div>
-                    </div>
-                </Link>
-            ))}
-        </div>
-    )
+    componentDidMount() {
+        if (localStorage.length === 0) this.fetchGenres()
+        this.fetchMovies()
+    }
+
+    fetchMovies = async () => {
+        let movies = await axios.get(`https://api.themoviedb.org/3/movie/${this.props.type}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed`)
+        this.setState({movies: movies.data.results})
+    }
+
+    fetchGenres = async () => {
+        let result = await axios.get('https://api.themoviedb.org/3/genre/movie/list?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US')
+        for (let genre of result.data.genres) {
+            localStorage.setItem(`${genre.id}`, `${genre.name}`)
+        }
+    }
+
+    render() {
+        return (
+            <div className='main'>
+                <MovieNavbar />
+                <div className='right-container'><Results movies={this.state.movies} /></div>  
+            </div>
+        )
+    }
 
 }
-
-export default Movies
