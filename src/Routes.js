@@ -5,6 +5,10 @@ import Navbar from './components/Navbar'
 import ComingSoon from './components/ComingSoon'
 import Popular from './components/Popular'
 import TopRated from './components/TopRated'
+import TVShows from './components/TVShows'
+import AiringToday from './components/AiringToday'
+import PopularTV from './components/PopularTV'
+import TopRatedTV from './components/TopRatedTV'
 
 const Routes = () => {
 
@@ -18,6 +22,11 @@ const Routes = () => {
             <Route exact path='/movies/coming_soon' component={ComingSoon} />
             <Route exact path='/movies/popular' component={Popular} />
             <Route exact path='/movies/top_rated' component={TopRated} />
+
+            <Route exact path='/tv_shows' component={TVShows} />
+            <Route exact path='/tv_shows/airing_today' component={AiringToday} />
+            <Route exact path='/tv_shows/popular' component={PopularTV} />
+            <Route exact path='/tv_shows/top_rated' component={TopRatedTV} />
             <style>{'body { background-color: #e6ecf0; }'}</style>
         </HashRouter>
     )

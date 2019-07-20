@@ -13,7 +13,7 @@ const Movies = props => {
                     <div className='card'>
                         <div className='image-container'><img src={frontPath + item.poster_path} alt="poster" /></div>
                         <div className='body'>
-                            <h3>{item.title}</h3>
+                            <h3>{item.title ? item.title : item.name}</h3>
                             <h4>{localStorage.getItem(`${item.genre_ids[0]}`)} {localStorage.getItem(`${item.genre_ids[1]}`) ? `/` : null} {localStorage.getItem(`${item.genre_ids[1]}`)}</h4>
                         </div>
                     </div>
