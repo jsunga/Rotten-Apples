@@ -7,8 +7,7 @@ import './Home.scss'
 export default class Home extends Component {
 
     state = {
-        movies: [],
-        isLoading: false
+        movies: []
     }
 
     componentDidMount() {
@@ -17,13 +16,8 @@ export default class Home extends Component {
     }
 
     fetchMovies = async () => {
-        this.setState({isLoading: true})
         let movies = await axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed')
-        this.setState({
-            isLoading: false,
-            movies: movies.data.results
-        })
-        console.log(movies.data.results)
+        this.setState({movies: movies.data.results})
     }
 
     fetchGenres = async () => {

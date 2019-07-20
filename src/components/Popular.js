@@ -1,17 +1,23 @@
 import React, { Component } from 'react'
 import MoviesNavbar from './MoviesNavbar'
+import Movies from './Movies'
 import axios from 'axios'
 import './Home.scss'
 
 export default class Popular extends Component {
 
+    state = {
+        movies: []
+    }
+
     componentDidMount() {
+        if (localStorage.length === 0) this.fetchGenres()
         this.fetchMovies()
     }
 
     fetchMovies = async () => {
-        let movies = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed`)
-        console.log(movies.data.results)
+        let movies = await axios.get('https://api.themoviedb.org/3/movie/popular?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed')
+        this.setState({movies: movies.data.results})
     }
 
     render() {
@@ -19,7 +25,7 @@ export default class Popular extends Component {
             <div className='home'>
                 <MoviesNavbar />
                 <div className='right-container'>
-                    Popular
+                    <Movies movies={this.state.movies} />
                 </div>  
             </div>
         )
