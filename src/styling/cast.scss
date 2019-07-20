@@ -1,0 +1,35 @@
+@import './variables';
+
+.cast-container {
+    font-family: $default;
+    margin: 20px;
+
+    .card {
+        width: 150px;
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 13.1px;
+        margin-bottom: 20px;
+    }
+
+    .image-container {
+        width: 150px;
+    }
+
+    img {
+        width: 150px;
+    }
+
+    .body {
+
+        div {
+            font-weight: bold;
+            text-align: center;
+        }
+
+        section {
+            color: grey;
+            text-align: center;
+        }
+    }
+}
