@@ -12,7 +12,7 @@ export default class Navbar extends Component {
             <>
                 <div className='navbar'>
                     <div className='left-container'>
-                        <main>Rotten Apples</main>
+                        <NavLink  to='/movies' className='logo'><main>Rotten Apples</main></NavLink>
                         <form>
                             <input placeholder='Search movie..' />
                             <button>Search</button>
@@ -21,7 +21,7 @@ export default class Navbar extends Component {
                     <div className='right-container'>
                         <ul>
                             <NavLink  to='/movies' activeStyle={{textDecoration: 'underline'}} className='nav-link'><li>Movies</li></NavLink>
-                            <NavLink  to='/tv_shows' exact activeStyle={{textDecoration: 'underline'}} className='nav-link'><li>TV Shows</li></NavLink>
+                            <NavLink  to='/tv_shows' activeStyle={{textDecoration: 'underline'}} className='nav-link'><li>TV Shows</li></NavLink>
                         </ul>
                     </div>
                 </div>
