@@ -95,14 +95,14 @@
         }
     }
 
-    .cast {
+    .header {
         font-family: $title-font;
         background-color: white;
 
         h1 {
             margin: 0;
             margin: 0 20px;
-            padding: 10px 0;
+            padding-bottom: 10px;
             border-bottom: 5px solid #FA320A;
         }
     }

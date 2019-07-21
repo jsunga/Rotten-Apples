@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Cast from './Cast'
+import Reviews from './Reviews'
 import axios from 'axios'
 import '../styling/details.scss'
 
@@ -10,6 +11,7 @@ export default class Details extends Component {
     state = {
         details: [],
         cast: [],
+        reviews: [],
         genre1: '',
         genre2: '',
         url: ''
@@ -37,6 +39,9 @@ export default class Details extends Component {
         let cast = await axios.get(`https://api.themoviedb.org/3/movie/${handle}/credits?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US`)
         if (cast.data.cast.length < 12) this.setState({cast: cast.data.cast.slice(0, cast.data.cast.length)})
         else this.setState({cast: cast.data.cast.slice(0, 12)})
+
+        let reviews = await axios.get(`https://api.themoviedb.org/3/movie/${handle}/reviews?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US&page=1`)
+        this.setState({reviews: reviews.data.results})
     }
 
     render() {
@@ -69,9 +74,13 @@ export default class Details extends Component {
                         />
                     </div>
                 </div>
-                <div className='cast'>
+                <div className='header'>
                     <h1>CAST</h1>
                     <Cast cast={this.state.cast} />
+                </div>
+                <div className='header'>
+                    <h1>REVIEWS</h1>
+                    <Reviews reviews={this.state.reviews} />
                 </div>
             </div>
         )
