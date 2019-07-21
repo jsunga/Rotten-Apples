@@ -14,7 +14,8 @@ export default class Details extends Component {
         reviews: [],
         genre1: '',
         genre2: '',
-        url: ''
+        url: '',
+        error: false
     }
 
     componentDidMount() {
@@ -25,37 +26,49 @@ export default class Details extends Component {
     }
 
     fetchDetails = async (type, id) => {
-        //fetch movie details
-        let details = await axios.get(`https://api.themoviedb.org/3/${type}/${id}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US`)
-        if (details.data.genres.length === 1) this.setState({details: details.data, genre1: details.data.genres[0].name})
-        else {
-            this.setState({
-                details: details.data,
-                genre1: details.data.genres[0].name,
-                genre2: details.data.genres[1].name
-            })
+        try {
+            //fetch movie details
+            let details = await axios.get(`https://api.themoviedb.org/3/${type}/${id}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US`)
+            if (details.data.genres.length === 1) this.setState({details: details.data, genre1: details.data.genres[0].name})
+            else {
+                this.setState({
+                    details: details.data,
+                    genre1: details.data.genres[0].name,
+                    genre2: details.data.genres[1].name
+                })
+            }
+
+            //fetch movie trailer
+            let trailers = await axios.get(`https://api.themoviedb.org/3/${type}/${id}/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US`)
+            if (trailers.data.results.length !== 0) this.setState({url: trailers.data.results[0].key})
+
+            //fetch movie cast
+            let cast = await axios.get(`https://api.themoviedb.org/3/${type}/${id}/credits?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US`)
+            if (cast.data.cast.length < 12) this.setState({cast: cast.data.cast.slice(0, cast.data.cast.length)})
+            else this.setState({cast: cast.data.cast.slice(0, 12)})
+
+            //fetch movie reviews
+            let reviews = await axios.get(`https://api.themoviedb.org/3/${type}/${id}/reviews?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US&page=1`)
+            this.setState({reviews: reviews.data.results})
         }
-
-        //fetch movie trailer
-        let trailers = await axios.get(`https://api.themoviedb.org/3/${type}/${id}/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US`)
-        if (trailers.data.results.length !== 0) this.setState({url: trailers.data.results[0].key})
-
-        //fetch movie cast
-        let cast = await axios.get(`https://api.themoviedb.org/3/${type}/${id}/credits?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US`)
-        if (cast.data.cast.length < 12) this.setState({cast: cast.data.cast.slice(0, cast.data.cast.length)})
-        else this.setState({cast: cast.data.cast.slice(0, 12)})
-
-        //fetch movie reviews
-        let reviews = await axios.get(`https://api.themoviedb.org/3/${type}/${id}/reviews?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US&page=1`)
-        this.setState({reviews: reviews.data.results})
+        catch(err) {
+            this.setState({error: true})
+        }
     }
 
     render() {
         const { details, genre1, genre2 } = this.state
+
+        if (this.state.error === true) {
+            return (
+                <h1 className='error'>Oops! This page doesn't exist.</h1>
+            )
+        }
+        
         return (
             <div className='details'>
                 <div className='backdrop'>
-                    <img src={frontPath + details.backdrop_path} alt='backdrop' />
+                    <img src={frontPath + details.backdrop_path} alt='background' />
                     <div className='details'>
                         <div className='left-container'>
                             <img src={frontPath + details.poster_path} alt='poster' />

@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Movies from './components/Movies'
 import Shows from './components/Shows'
 import Details from './components/Details'
+import Search from './components/Search'
 
 const Routes = () => {
 
@@ -23,6 +24,11 @@ const Routes = () => {
             <Route exact path='/tv/top_rated' component={() => <Shows type='top_rated' />} />
 
             <Route path='/details/:type/:id' component={Details} />
+
+
+            <Route exact path="/search" render={(props) => (
+                <Search key={props.location.search} />)} 
+            />
             
             <style>{'body { background-color: #e6ecf0; }'}</style>
         </HashRouter>

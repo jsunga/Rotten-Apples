@@ -1,23 +1,20 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 import fb from '../assets/fb.png'
 import ig from '../assets/ig.png'
 import twitter from '../assets/twitter.png'
-import axios from 'axios'
 import '../styling/navbar.scss'
 
-export default class Navbar extends Component {
+class Navbar extends Component {
 
     state = {
         input: '',
         results: []
     }
 
-    search = async e => {
+    search =  e => {
         e.preventDefault()
-        let results = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US&page=1&include_adult=false&query=${this.state.input}`)
-        console.log(results.data.results)
-
+        this.props.history.push(`/search?queue=${this.state.input}`)
     }
 
     render() {
@@ -27,7 +24,7 @@ export default class Navbar extends Component {
                     <div className='left-container'>
                         <NavLink  to='/movies' className='logo'><main>Rotten Apples</main></NavLink>
                         <form onSubmit={this.search}>
-                            <input placeholder='Search movie..' value={this.state.input} onChange={e => this.setState({input: e.target.value})}/>
+                            <input placeholder='Search movie..' value={this.state.input} onChange={e => this.setState({input: e.target.value})} onClick={() => this.setState({input: ''})} />
                             <button>Search</button>
                         </form>
                     </div>
@@ -53,3 +50,5 @@ export default class Navbar extends Component {
     }
 
 }
+
+export default withRouter(Navbar)
