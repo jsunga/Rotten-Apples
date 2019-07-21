@@ -31,7 +31,7 @@ export default class Home extends Component {
         return (
             <div className='main'>
                 <MovieNavbar />
-                <div className='right-container'><Results movies={this.state.movies} /></div>  
+                <div className='right-container'><Results movies={this.state.movies} type='/details/movie/' /></div>  
             </div>
         )
     }

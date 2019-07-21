@@ -9,7 +9,7 @@ const Results = props => {
     return (
         <div className='results'>
             {props.movies.map(item => (
-                <Link to={`/id/${item.id}`} key={item.id} className='link'>
+                <Link to={`${props.type}${item.id}`} key={item.id} className='link'>
                     <div className='card'>
                         <div className='image-container'><img src={frontPath + item.poster_path} alt="poster" /></div>
                         <div className='body'>
