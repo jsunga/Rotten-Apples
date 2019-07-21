@@ -22,7 +22,7 @@ const Routes = () => {
             <Route exact path='/tv_shows/popular' component={() => <Shows type='popular' />} />
             <Route exact path='/tv_shows/top_rated' component={() => <Shows type='top_rated' />} />
 
-            <Route path='/details/movie/:handle' component={Details} />
+            <Route path='/details/:type/:id' component={Details} />
             
             <style>{'body { background-color: #e6ecf0; }'}</style>
         </HashRouter>

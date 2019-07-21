@@ -18,12 +18,12 @@ export default class Details extends Component {
     }
 
     componentDidMount() {
-        const { handle } = this.props.match.params
-        this.fetchDetails(handle)
+        const { type, id } = this.props.match.params
+        this.fetchDetails(type, id)
     }
 
-    fetchDetails = async handle => {
-        let details = await axios.get(`https://api.themoviedb.org/3/movie/${handle}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US`)
+    fetchDetails = async (type, id) => {
+        let details = await axios.get(`https://api.themoviedb.org/3/${type}/${id}?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US`)
         if (details.data.genres.length === 1) this.setState({details: details.data, genre1: details.data.genres[0].name})
         else {
             this.setState({
@@ -33,14 +33,14 @@ export default class Details extends Component {
             })
         }
 
-        let trailers = await axios.get(`https://api.themoviedb.org/3/movie/${handle}/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US`)
+        let trailers = await axios.get(`https://api.themoviedb.org/3/${type}/${id}/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US`)
         this.setState({url: trailers.data.results[0].key})
 
-        let cast = await axios.get(`https://api.themoviedb.org/3/movie/${handle}/credits?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US`)
+        let cast = await axios.get(`https://api.themoviedb.org/3/${type}/${id}/credits?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US`)
         if (cast.data.cast.length < 12) this.setState({cast: cast.data.cast.slice(0, cast.data.cast.length)})
         else this.setState({cast: cast.data.cast.slice(0, 12)})
 
-        let reviews = await axios.get(`https://api.themoviedb.org/3/movie/${handle}/reviews?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US&page=1`)
+        let reviews = await axios.get(`https://api.themoviedb.org/3/${type}/${id}/reviews?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US&page=1`)
         this.setState({reviews: reviews.data.results})
     }
 
