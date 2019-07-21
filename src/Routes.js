@@ -17,10 +17,10 @@ const Routes = () => {
             <Route exact path='/movies/popular' component={() => <Movies type='popular' />} />
             <Route exact path='/movies/top_rated' component={() => <Movies type='top_rated' />} />
 
-            <Route exact path='/tv_shows' component={() => <Shows type='on_the_air' />} />
-            <Route exact path='/tv_shows/airing_today' component={() => <Shows type='airing_today' />} />
-            <Route exact path='/tv_shows/popular' component={() => <Shows type='popular' />} />
-            <Route exact path='/tv_shows/top_rated' component={() => <Shows type='top_rated' />} />
+            <Route exact path='/tv' component={() => <Shows type='on_the_air' />} />
+            <Route exact path='/tv/airing_today' component={() => <Shows type='airing_today' />} />
+            <Route exact path='/tv/popular' component={() => <Shows type='popular' />} />
+            <Route exact path='/tv/top_rated' component={() => <Shows type='top_rated' />} />
 
             <Route path='/details/:type/:id' component={Details} />
             
