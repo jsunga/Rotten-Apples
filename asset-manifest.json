@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Rotten-Apples/static/css/main.e217766f.chunk.css",
+    "main.js": "/Rotten-Apples/static/js/main.f9e5d8c6.chunk.js",
+    "main.js.map": "/Rotten-Apples/static/js/main.f9e5d8c6.chunk.js.map",
+    "runtime~main.js": "/Rotten-Apples/static/js/runtime~main.ff43c153.js",
+    "runtime~main.js.map": "/Rotten-Apples/static/js/runtime~main.ff43c153.js.map",
+    "static/js/2.d8ba002b.chunk.js": "/Rotten-Apples/static/js/2.d8ba002b.chunk.js",
+    "static/js/2.d8ba002b.chunk.js.map": "/Rotten-Apples/static/js/2.d8ba002b.chunk.js.map",
+    "index.html": "/Rotten-Apples/index.html",
+    "precache-manifest.f4257d7cbb6b4a07ea114c7abbb2bed3.js": "/Rotten-Apples/precache-manifest.f4257d7cbb6b4a07ea114c7abbb2bed3.js",
+    "service-worker.js": "/Rotten-Apples/service-worker.js",
+    "static/css/main.e217766f.chunk.css.map": "/Rotten-Apples/static/css/main.e217766f.chunk.css.map"
+  }
+}
